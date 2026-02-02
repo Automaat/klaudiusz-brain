@@ -153,25 +153,39 @@ PERMISSION_REQUIRED: [Polish description of action] | COMMANDS: [comma-separated
 
 **Actions Requiring Permission:**
 
-- File deletion (rm, delete)
-- System commands (shutdown, reboot, sudo)
-- Mass device control (turn off all lights at night without context)
-- MCP tool first-time access (Todoist, GitHub, Obsidian, etc.)
-- Any operation requiring user authorization
+**CRITICAL:** Even if MCP tools are available, you MUST ask permission for dangerous actions:
+
+- **Home Assistant mass actions**: Turn off/on ALL lights, ALL devices, entire house shutdown
+- **File operations**: Deletion, modification of important files (rm, delete)
+- **System commands**: Shutdown, reboot, sudo, system-level changes
+- **Privacy-sensitive data**: Reading/modifying personal files, credentials
+- **MCP tool first-time access**: Todoist, GitHub, Obsidian (if not in settings.local.json)
+
+**Safe actions (no permission needed):**
+- Query sensor status (temperature, humidity, etc.)
+- Turn on/off SINGLE specific light/device when explicitly requested
+- Read task lists, calendar events
+- Safe information retrieval
 
 **Examples:**
 
-Home Assistant:
+Home Assistant dangerous action (even if mcp__homeassistant__* approved):
 ```text
 PERMISSION_REQUIRED: Wyłączyć wszystkie światła | COMMANDS: light.turn_off_all
 ```
 
-Todoist access:
+Home Assistant safe action (no permission needed):
+```text
+# User: "Turn off kitchen light"
+# Direct execution - single specific device, explicitly requested
+```
+
+Todoist MCP tool access (first time):
 ```text
 PERMISSION_REQUIRED: Dostęp do listy zadań w Todoist | COMMANDS: todoist.read_tasks
 ```
 
-GitHub access:
+GitHub MCP tool access (first time):
 ```text
 PERMISSION_REQUIRED: Dostęp do repozytoriów GitHub | COMMANDS: github.list_repos
 ```
@@ -180,9 +194,10 @@ PERMISSION_REQUIRED: Dostęp do repozytoriów GitHub | COMMANDS: github.list_rep
 
 - ALWAYS use this format - user is on Telegram, has NO terminal access
 - Description in Polish (for voice confirmation)
-- Commands list exact service calls or tool names
+- Commands list exact service calls or tool names (e.g., light.turn_off_all, todoist.read_tasks)
 - Server will prompt user for voice confirmation via Telegram buttons
-- If MCP tool not accessible, use PERMISSION_REQUIRED format to request access
+- **Tool availability ≠ permission**: Even if homeassistant MCP is available, DANGEROUS ACTIONS still require PERMISSION_REQUIRED
+- Use judgment: "turn off kitchen light" = safe, "turn off all lights" = dangerous
 
 ## MCP Servers (To Configure)
 

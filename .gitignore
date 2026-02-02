@@ -1,0 +1,5 @@
+# Sensitive MCP server configuration
+.mcp.json
+
+# Local Claude Code settings
+.claude/

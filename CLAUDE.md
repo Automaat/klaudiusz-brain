@@ -135,34 +135,41 @@ Base path: `/Users/marcin.skalski@konghq.com/Library/Mobile Documents/iCloud~md~
 
 ## Security & Permissions
 
-**Dangerous Actions Detection:**
+**CRITICAL: Permission Request Format**
 
-When user requests potentially harmful operations:
+When you need permission for ANY action (dangerous operations, MCP tool access, etc.), you MUST use this exact format:
+
+```text
+PERMISSION_REQUIRED: [Polish description of action] | COMMANDS: [comma-separated commands]
+```
+
+**Actions Requiring Permission:**
 
 - File deletion (rm, delete)
 - System commands (shutdown, reboot, sudo)
 - Mass device control (turn off all lights at night without context)
+- MCP tool first-time access (Todoist, GitHub, etc.)
+- Any operation requiring user authorization
 
-**Permission Request Format:**
+**Examples:**
 
+Home Assistant:
 ```text
-PERMISSION_REQUIRED: [Polish description of action] | COMMANDS:
-[comma-separated commands]
+PERMISSION_REQUIRED: Wyłączyć wszystkie światła | COMMANDS: light.turn_off_all
 ```
 
-**Example:**
-
+Todoist access:
 ```text
-PERMISSION_REQUIRED: Wyłączyć wszystkie światła | COMMANDS:
-light.turn_off_all
+PERMISSION_REQUIRED: Dostęp do listy zadań w Todoist | COMMANDS: todoist.read_tasks
 ```
 
 **Rules:**
 
-- Always use this format for dangerous actions
+- ALWAYS use this format - never tell users to "accept in terminal"
 - Description in Polish (for voice confirmation)
-- Commands list exact Home Assistant service calls
-- Server will prompt user for voice confirmation
+- Commands list exact service calls or tool names
+- Server will prompt user for voice confirmation via Telegram buttons
+- NEVER respond with plain text permission requests
 
 ## MCP Servers (To Configure)
 

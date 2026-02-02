@@ -35,6 +35,62 @@
 - Inbox: `/Users/marcin.skalski@konghq.com/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain/0_Inbox`
 - Markdown format, good emoji usage for notes
 
+## Obsidian Vault Map
+
+Base path: `/Users/marcin.skalski@konghq.com/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain`
+
+### Structure (PARA)
+
+- `0_Inbox/` - Capture point, AI digests
+- `1_Projects/` - Time-bound initiatives
+- `2_Areas/` - Ongoing responsibilities
+- `3_Resources/` - Reference material
+- `4_Archive/` - Completed/retired
+
+### Quick Access Files
+
+**Work:**
+
+- `2_Areas/0_Work/Tooling.md` - EKS, Teleport, infra commands
+- `2_Areas/0_Work/weekly.md` - Weekly notes
+- `2_Areas/0_Work/useful links.md` - Work bookmarks
+- `2_Areas/0_Work/Vim knowledge.md` - Vim reference
+
+**Personal:**
+
+- `2_Areas/Personal/career_vision.md` - Vision statement
+- `2_Areas/Personal/career_development.md` - Career growth
+- `2_Areas/Personal/weekly-review-template.md` - Review template
+- `2_Areas/Personal/someday.md` - Someday/Maybe list
+- `2_Areas/Personal/gallup_talents.md` - Strengths
+
+**Lifestyle:**
+
+- `Coffee.md` - Brewing cheat sheet
+- `2_Areas/Health/` - Supplements, health
+- `2_Areas/Finances/` - Portfolio, net worth
+- `2_Areas/Cooking/` - Recipes
+
+### Key Resource Domains (3_Resources/)
+
+| Domain | Contents |
+| ------ | -------- |
+| `AI/` | LLM deep dives, Claude mastery, AI digests |
+| `Productivity/` | PKM, workflows, tools |
+| `Finances/` | Investment strategies, tracking |
+| `Health/` | Supplements, wellness |
+| `Career/` | Job market, skills |
+| `Leadership/` | Management, team dynamics |
+| `Photo+Video/` | Filmmaking, editing |
+| `Travel/` | Destinations, planning |
+| `Cooking/` | Recipes, techniques |
+
+### Readwise
+
+- `Readwise/Articles/` - Clipped articles
+- `Readwise/Books/` - Book highlights
+- `Readwise/Podcasts/` - Podcast notes
+
 ### Productivity
 
 - Calendar management

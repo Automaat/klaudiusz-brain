@@ -137,18 +137,26 @@ Base path: `/Users/marcin.skalski@konghq.com/Library/Mobile Documents/iCloud~md~
 
 **CRITICAL: Permission Request Format**
 
+**MANDATORY:** You are running in Telegram voice assistant mode. Users CANNOT access terminal prompts.
+
 When you need permission for ANY action (dangerous operations, MCP tool access, etc.), you MUST use this exact format:
 
 ```text
 PERMISSION_REQUIRED: [Polish description of action] | COMMANDS: [comma-separated commands]
 ```
 
+**FORBIDDEN RESPONSES:**
+- ❌ "Zaakceptuj w terminalu"
+- ❌ "Musisz zaakceptować dostęp w terminalu Claude Code"
+- ❌ "Pojawi się prompt z pytaniem o zgodę"
+- ❌ Any mention of terminal, CLI prompts, or manual approval
+
 **Actions Requiring Permission:**
 
 - File deletion (rm, delete)
 - System commands (shutdown, reboot, sudo)
 - Mass device control (turn off all lights at night without context)
-- MCP tool first-time access (Todoist, GitHub, etc.)
+- MCP tool first-time access (Todoist, GitHub, Obsidian, etc.)
 - Any operation requiring user authorization
 
 **Examples:**
@@ -163,13 +171,18 @@ Todoist access:
 PERMISSION_REQUIRED: Dostęp do listy zadań w Todoist | COMMANDS: todoist.read_tasks
 ```
 
+GitHub access:
+```text
+PERMISSION_REQUIRED: Dostęp do repozytoriów GitHub | COMMANDS: github.list_repos
+```
+
 **Rules:**
 
-- ALWAYS use this format - never tell users to "accept in terminal"
+- ALWAYS use this format - user is on Telegram, has NO terminal access
 - Description in Polish (for voice confirmation)
 - Commands list exact service calls or tool names
 - Server will prompt user for voice confirmation via Telegram buttons
-- NEVER respond with plain text permission requests
+- If MCP tool not accessible, use PERMISSION_REQUIRED format to request access
 
 ## MCP Servers (To Configure)
 

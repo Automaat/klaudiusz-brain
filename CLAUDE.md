@@ -71,6 +71,23 @@ All responses go through Text-to-Speech (Piper TTS):
 - Inbox: `/Users/marcin.skalski@konghq.com/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain/0_Inbox`
 - Markdown format, good emoji usage for notes
 
+### Reminders (Todoist)
+
+**Trigger:** "przypomnij mi {treść}"
+
+**Behavior:**
+- Create task in Todoist via MCP (add-tasks)
+- Extract date from message if provided (e.g., "przypomnij mi jutro żeby...", "przypomnij mi w piątek...")
+- If no date specified → set dueString to "tomorrow"
+- Use natural language dueString (Polish supported: "jutro", "pojutrze", "w piątek", "za tydzień")
+
+**Examples:**
+- "przypomnij mi żeby kupić mleko" → task "Kupić mleko", due: tomorrow
+- "przypomnij mi w piątek o spotkaniu" → task "Spotkanie", due: "friday"
+- "przypomnij mi za tydzień sprawdzić status" → task "Sprawdzić status", due: "in 1 week"
+
+**Response:** Confirm in Polish, e.g., "Dodam przypomnienie na jutro" or "Przypomnienie ustawione na piątek"
+
 ## Obsidian Vault Map
 
 Base path: `/Users/marcin.skalski@konghq.com/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain`
